@@ -49,7 +49,7 @@ int xdp_ipv4_filter_func(struct xdp_md *ctx)
 		action = XDP_TX;
 	}
 
-	return xdp_stats_record_action(ctx, action);  
+	return action;  
 }
 
 SEC("xdp_ipv6_filter")
@@ -72,7 +72,7 @@ int xdp_ipv6_filter_func(struct xdp_md *ctx)
                 action = XDP_TX;
         }
 
-        return xdp_stats_record_action(ctx, action);  
+        return action;  
 }
 
 
@@ -118,7 +118,7 @@ int  xdp_parser_func(struct xdp_md *ctx)
 
 
  out:
-	return xdp_stats_record_action(ctx, action);
+	return action;
 }
 
 SEC("xdp_redirect")
