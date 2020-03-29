@@ -130,8 +130,8 @@ int xdp_redirect_func(struct xdp_md *ctx)
 	struct ethhdr *eth;
 	int eth_type;
 	int action = XDP_PASS;
-	unsigned char dst[ETH_ALEN] = {(unsigned char)0x001b21be391e}; 
-	unsigned ifindex = 0;
+	unsigned char dst[ETH_ALEN] = {(unsigned char) 0x001b2194deb5}; 
+	unsigned ifindex = 13;
 
 	nh.pos = data;
 
@@ -145,7 +145,7 @@ int xdp_redirect_func(struct xdp_md *ctx)
 	action = bpf_redirect(ifindex, 0);
 
 out:
-	return xdp_stats_record_action(ctx, action);
+	return action;
 }
 
 char _license[] SEC("license") = "GPL";
